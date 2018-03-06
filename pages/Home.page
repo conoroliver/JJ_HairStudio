@@ -1,0 +1,88 @@
+<apex:page showHeader="false" sidebar="false" doctype="html-5.0" standardStylesheets="false" controller="HomeController">
+    <style type="text/css">
+    
+        .rounded{
+            border-radius: 6px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0rem;
+            overflow: hidden;
+            background-color: #2E2E2E;
+        }
+
+        li {
+            float: right;
+        }
+        
+        li a {
+            display: block;
+            text-align: center;
+            padding: 2rem 2rem;
+            text-decoration: none;
+            height: 3.25rem; 
+        }
+
+        li a:hover {
+            background-color: #EB3B3B;
+        }
+        
+        .active {
+            background-color: #ff6666;
+           }
+           
+           .custom-background {
+            background-color: lightblue !important;
+            }
+            
+        .right {
+            float: right;
+        }
+    </style>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>OrgCrawler Creation Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Import the Design System style sheet -->
+        <apex:slds />
+    </head>
+
+
+
+
+   
+    
+    <body style="background-color: #F54747 !important">
+        <ul class="slds-border_bottom" style="border-width: 2px; border-color: #000000">
+          <li style="padding-right: 2rem"><a class="slds-context-bar__label-action slds-text-color_inverse" href="#about">About</a></li>
+          <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="#contact">Contact</a></li>
+          <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="#appt">Book</a></li>
+          <li><a class="slds-context-bar__label-action slds-text-color_inverse active" href="#home">Home</a></li>
+          
+          
+          
+        </ul>
+
+        <div class="slds-col slds-size_1-of-1 slds-large-size_11-of-12 slds-align_absolute-center">
+            <div class="slds-border_top slds-border_left slds-border_right slds-border_bottom"
+                 style="background-color: #333333; border-width: 10px; border-color: #333333; height:90vh; padding-left:2rem; padding-right:2rem">
+                
+                <div class="slds-border_top slds-border_left slds-border_right slds-border_bottom"
+                     style="border-width: 3px; margin-bottom: 1rem; border-radius:10px; border-color: #F54747">
+                    <div class="slds-text-heading_large slds-align_absolute-center slds-text-color_inverse" style="padding: .75rem 0rem .75rem">Welcome to J&amp;J Hair Studio</div>
+                </div>
+                <div>
+                    <apex:image url="{!$Resource.ShopPanorama}" />
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+
+</apex:page>
