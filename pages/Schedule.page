@@ -86,8 +86,8 @@
         <ul id="nav-shadow" class="slds-border_bottom">
           <li style="padding-right: 2rem"><a class="slds-context-bar__label-action slds-text-color_inverse" href="About">About</a></li>
           <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="Contact">Contact</a></li>
-          <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="Schedule">Book</a></li>
-          <li><a class="slds-context-bar__label-action slds-text-color_inverse active" href="Home">Home</a></li>
+          <li><a class="slds-context-bar__label-action slds-text-color_inverse active" href="Schedule">Book</a></li>
+          <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="Home">Home</a></li>
           
           
           
@@ -97,9 +97,6 @@
             <div class="custom-background">
                 <div id="title-box" class="slds-border_top slds-border_left slds-border_right slds-border_bottom">
                     <div id="title-text" class="slds-text-heading_large slds-align_absolute-center slds-text-color_inverse">Welcome to J&amp;J Hair Studio</div>
-                </div>
-                <div>
-                    <apex:image url="{!$Resource.ShopPanorama}" />
                 </div>
             </div>
         </div>
