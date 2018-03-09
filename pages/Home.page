@@ -1,19 +1,14 @@
-<apex:page showHeader="false" sidebar="false" doctype="html-5.0" standardStylesheets="false" controller="HomeController">
+<apex:page showHeader="false" sidebar="false" doctype="html-5.0" standardStylesheets="false"
+           controller="HomeController">
     <style type="text/css">
     
         .rounded{
             border-radius: 6px;
         }
         
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0rem;
-            overflow: hidden;
-            background-color: #2E2E2E;
-        }
+        
 
-        li {
+        .tab {
             float: right;
         }
         
@@ -29,6 +24,8 @@
             background-color: #EB3B3B;
         }
         
+        
+        
         .active {
             background-color: #ff6666 !important;
            }
@@ -41,18 +38,37 @@
              width: 75vw;
              padding-left: 2rem;
              padding-right: 2rem;
+             margin-left:auto;
+             margin-right:auto;
+             overflow:auto;
+        }
+        
+        .font-scale {
+            font-size: calc(0.6em + 1vmin);
         }
             
         .right {
             float: right;
         }
-        #nav-shadow{
+        
+        .center {
+            border-radius:10px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        
+        #nav-bar{
+            list-style-type: none;
+            margin: 0;
+            padding: 0rem;
+            overflow: hidden;
+            background-color: #2E2E2E;
             border-width: 2px;
             border-color: #000000;
         }
         
         #title-box{
-            width: 65vw;
+            width: 75%;
             margin-left: auto;
             margin-right: auto;
             margin-top: 1.5rem;
@@ -61,50 +77,209 @@
             border-radius:10px;
             border-color: #F54747;
         }
+        <div id="map"></div>
+        
+        .info-box{
+            background-color: #8F8F8F !important;
+        }
+        
+        .book-media{
+            margin-top:2rem;
+        }
+        
+        .book-button{
+            border-width: 1px !important;
+            border-color: #FFFFFF !important;
+            color:white !important;
+            background-color: #ff6666 !important;
+            padding: .25rem 1rem .25rem !important;
+        }
+        
+        .book-button:hover{
+            background-color: #EB3B3B !important;
+        }
+        
         #title-text{
             padding: .75rem 0rem .75rem
         }
+        #headshots{
+            height=100px
+            overflow:hidden;
+        }
         
+        #map {
+            line-height:normal !important;
+            margi-top:1rem;
+            height:13em;
+            color:black !important;
+         }
+
+
+
+
+
     </style>
 
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
         <title>OrgCrawler Creation Page</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
         <!-- Import the Design System style sheet -->
         <apex:slds />
     </head>
 
 
-
-
-   
-    
     <body style="background-color: #F54747 !important">
-        <ul id="nav-shadow" class="slds-border_bottom">
-          <li style="padding-right: 2rem"><a class="slds-context-bar__label-action slds-text-color_inverse" href="About">About</a></li>
-          <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="Contact">Contact</a></li>
-          <li><a class="slds-context-bar__label-action slds-text-color_inverse" href="Schedule">Book</a></li>
-          <li><a class="slds-context-bar__label-action slds-text-color_inverse active" href="Home">Home</a></li>
-          
-          
-          
-        </ul>
-
-        <div class="slds-col slds-size_1-of-1 slds-large-size_11-of-12 slds-align_absolute-center">
-            <div class="custom-background">
+    <ul id="nav-bar" class="slds-border_bottom">
+        <li class="tab" style="padding-right: 2rem"><a class="slds-context-bar__label-action slds-text-color_inverse"
+                                                       href="About">About</a>
+        </li>
+        <li class="tab"><a class="slds-context-bar__label-action slds-text-color_inverse" href="Contact">Contact</a>
+        </li>
+        <li class="tab"><a class="slds-context-bar__label-action slds-text-color_inverse" href="Schedule">Book</a></li>
+        <li class="tab"><a class="slds-context-bar__label-action slds-text-color_inverse active" href="Home">Home</a>
+        </li>
+    </ul>
+    <apex:form >
+        <div class="custom-background slds-grid slds-container_large slds-wrap slds-grid_align-spread slds-grid_vertical-align-start">
+            <div class="slds-col slds-size_1-of-1">
                 <div id="title-box" class="slds-border_top slds-border_left slds-border_right slds-border_bottom">
-                    <div id="title-text" class="slds-text-heading_large slds-align_absolute-center slds-text-color_inverse">Welcome to J&amp;J Hair Studio</div>
+                    <div id="title-text"
+                         class="slds-text-heading_large slds-align_absolute-center slds-text-color_inverse">
+                        Welcome to J&amp;J Hair Studio
+                    </div>
                 </div>
-                <div>
-                    <apex:image url="{!$Resource.ShopPanorama}" />
+                <div class="slds-col slds-size_1-of-1">
+                    <div>
+                        <apex:image url="{!$Resource.ShopPanorama}"/>
+                    </div>
                 </div>
             </div>
+
+            <div class="slds-p-horizontal_small slds-col slds-size_1-of-3 font-scale slds-text-color_inverse "
+                 style="margin-top:1.5rem; overflow:hidden;">
+                <div class="info-box slds-box" style="height:18em; background-color: #8F8F8F; border-color: #F54747; border-width: 0px;">
+                    <div class="slds-text-heading_medium slds-align_absolute-center" style="margin-top:.25rem">
+                        Services Offered
+                    </div>
+                    <ul style="padding-left:1rem; margin-top:1rem;">
+                        <li>Cut</li>
+                        <li>Cut and Color</li>
+                        <li>Perm</li>
+                        <li>Shampoo</li>
+                        <li>Hair Care Products</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="slds-p-horizontal_small slds-col slds-size_1-of-3 font-scale slds-text-color_inverse "
+                 style="margin-top:1.5rem; overflow:hidden;">
+                <div class="info-box slds-box" style="height:18em; background-color: #8F8F8F; border-color: #F54747; border-width: 0px;">
+                    <div class="slds-text-heading_medium slds-align_absolute-center" style="margin-top:.25rem">
+                        Location
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="slds-p-horizontal_small slds-col slds-size_1-of-3 font-scale slds-text-color_inverse "
+                 style="margin-top:1.5rem; overflow:hidden;">
+                <div class="info-box slds-box" style="height:18em; background-color: #8F8F8F; border-color: #F54747; border-width: 0px;">
+                    <div class="slds-text-heading_medium slds-align_absolute-center" style="margin-top:.25rem">
+                        Schedule
+                    </div>
+                    <div class="book-media slds-media slds-media_large slds-media_center">
+                        <div class="slds-media__figure">
+                          <span class="slds-avatar slds-avatar_large">
+                            <apex:image url="{!$Resource.JanPhoto}"/>
+                          </span>
+                        </div>
+                        <div class="slds-media__body">
+                          <apex:commandButton value="Book with Jan" styleClass="book-button slds-button" />
+                        </div>
+                    </div>
+                    <div class="book-media slds-media  slds-media_large slds-media_center">
+                        <div class="slds-media__figure">
+                          <span class="slds-avatar slds-avatar_large">
+                            <apex:image url="{!$Resource.MelPhoto}"/>
+                          </span>
+                        </div>
+                        <div class="slds-media__body">
+                          <apex:commandButton value="Book with Mel" styleClass="book-button slds-button" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
-    </body>
+    </apex:form>
 
+    </body>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpdCbQHBUFFdClkPLgLRNQ5Wk5IQaiKAA&callback=initMap"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- Contains code adapted from:https://eshopsync.com/integrate-google-map-api-salesforce-2/ -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var myOptions={ zoom: 14,mapTypeId: google.maps.MapTypeId.ROADMAP, mapTypeControl: false };
+            var map;
+            var marker;
+            var geocoder = new google.maps.Geocoder();
+            var address ="2544 NE Broadway St, Portland, Oregon 97232, United States";
+            var infowindow = new google.maps.InfoWindow({
+            content: "<b>J&ampJ Hair Salon</b><br>2544 NE Broadway St<br>Portland, 97232<br>OR<br>US"
+            
+        });
+
+        geocoder.geocode( { address: address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK&&results.length) {
+                if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+
+                    //create map
+                    map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+                    //center map
+                    map.setCenter(results[0].geometry.location);
+
+                    //create marker
+                    marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map,
+                    title: "Salon Location"
+                });
+
+                //add listeners
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                });
+                google.maps.event.addListener(infowindow, 'closeclick', function() {
+                    map.setCenter(marker.getPosition());
+                });
+            }
+        } else {
+            $('#map').css({'height' : '15px'});
+            $('#map').html("Oops! JJ studio's billing address could not be found, please make sure the address is correct.");
+            resizeIframe();
+            }
+    });
+
+        function resizeIframe() {
+            var me = window.name;
+            if (me) {
+                var iframes = parent.document.getElementsByName(me);
+                if (iframes&&iframes.length == 1) {
+                    height = document.body.offsetHeight;
+                    iframes[0].style.height = height + "px";
+                }
+            }
+            }
+        });
+
+
+    </script>
 
 </apex:page>
