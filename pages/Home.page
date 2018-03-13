@@ -2,6 +2,8 @@
            controller="HomeController">
     <style type="text/css">
     
+        
+    
         .rounded{
             border-radius: 6px;
         }
@@ -31,16 +33,16 @@
            }
            
         .custom-background {
-             background-color: #333333;
+             background-color: #8F8F8F;
              border-width: 10px;
              border-color: #333333;
-             height:90vh;
+             padding-bottom:7rem;
+             margin-bottom:8rem;
              width: 75vw;
-             padding-left: 2rem;
-             padding-right: 2rem;
+             
              margin-left:auto;
              margin-right:auto;
-             overflow:auto;
+             
         }
         
         .font-scale {
@@ -65,17 +67,22 @@
             background-color: #2E2E2E;
             border-width: 2px;
             border-color: #000000;
+            position: relative;
         }
         
         #title-box{
-            width: 75%;
+            width: 50%;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 1.5rem;
             border-width: 3px;
-            margin-bottom: 1rem;
+            text-shadow: 1px 2px #000000;
             border-radius:10px;
             border-color: #F54747;
+            background-color: rgba(180,180,180,.5);
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         <div id="map"></div>
         
@@ -85,6 +92,7 @@
         
         .book-media{
             margin-top:2rem;
+            padding: 0rem 2rem;;
         }
         
         .book-button{
@@ -99,9 +107,21 @@
             background-color: #EB3B3B !important;
         }
         
+        .image-container {
+            background-image: url("{!$Resource.ShopPanorama}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%; 
+            position: relative;
+            text-align: center;
+            color: white;
+            height:15em;
+        }
+        
         #title-text{
             padding: .75rem 0rem .75rem
         }
+        
         #headshots{
             height=100px
             overflow:hidden;
@@ -109,10 +129,26 @@
         
         #map {
             line-height:normal !important;
-            margi-top:1rem;
-            height:13em;
+            margin-top:1rem;
+            width:25%;
+            float:right;
+            margin-right:2rem;
+            margin-bottom:1rem;
+            height:12em;
             color:black !important;
          }
+         .logo-container {
+              background-color: rgba(245,71,71,.5);
+              height:10em;
+              width:10em;
+              float:left;
+              margin-left:5%;
+              margin-top: 5px;
+              padding:.5rem;
+              
+              padding-bottom: 9.5rem;
+         }
+         
 
 
 
@@ -133,6 +169,8 @@
 
     <body style="background-color: #F54747 !important">
     <ul id="nav-bar" class="slds-border_bottom">
+        
+ 
         <li class="tab" style="padding-right: 2rem"><a class="slds-context-bar__label-action slds-text-color_inverse"
                                                        href="About">About</a>
         </li>
@@ -144,24 +182,23 @@
     </ul>
     <apex:form >
         <div class="custom-background slds-grid slds-container_large slds-wrap slds-grid_align-spread slds-grid_vertical-align-start">
-            <div class="slds-col slds-size_1-of-1">
+            <div class="slds-col slds-size_1-of-1 image-container">
+                <div class="logo-container">
+                    <apex:image id="logo" value="{!$Resource.Logo}" styleClass="logo" alt="Studio logo"/>
+                </div>    
                 <div id="title-box" class="slds-border_top slds-border_left slds-border_right slds-border_bottom">
                     <div id="title-text"
                          class="slds-text-heading_large slds-align_absolute-center slds-text-color_inverse">
                         Welcome to J&amp;J Hair Studio
                     </div>
                 </div>
-                <div class="slds-col slds-size_1-of-1">
-                    <div>
-                        <apex:image url="{!$Resource.ShopPanorama}"/>
-                    </div>
-                </div>
+                  
             </div>
 
-            <div class="slds-p-horizontal_small slds-col slds-size_1-of-3 font-scale slds-text-color_inverse "
-                 style="margin-top:1.5rem; overflow:hidden;">
-                <div class="info-box slds-box" style="height:18em; background-color: #8F8F8F; border-color: #F54747; border-width: 0px;">
-                    <div class="slds-text-heading_medium slds-align_absolute-center" style="margin-top:.25rem">
+            <div class="slds-col slds-size_1-of-1 font-scale slds-text-color_inverse "
+                 style="overflow:hidden;">
+                <div class="info-box" style="height:18em; background-color: #333333;">
+                    <div class="slds-text-heading_medium slds-align_absolute-center" style="padding-top:1.5rem">
                         Services Offered
                     </div>
                     <ul style="padding-left:1rem; margin-top:1rem;">
@@ -175,20 +212,20 @@
             </div>
 
 
-            <div class="slds-p-horizontal_small slds-col slds-size_1-of-3 font-scale slds-text-color_inverse "
-                 style="margin-top:1.5rem; overflow:hidden;">
-                <div class="info-box slds-box" style="height:18em; background-color: #8F8F8F; border-color: #F54747; border-width: 0px;">
-                    <div class="slds-text-heading_medium slds-align_absolute-center" style="margin-top:.25rem">
+            <div class="slds-col slds-size_1-of-1 font-scale slds-text-color_inverse "
+                 style="overflow:hidden;">
+                <div class="info-box" style="height:18em; background-color: #8F8F8F;">
+                    <div class="slds-text-heading_medium slds-align_absolute-center" style="padding-top:1.5rem">
                         Location
                     </div>
                     <div id="map"></div>
                 </div>
             </div>
 
-            <div class="slds-p-horizontal_small slds-col slds-size_1-of-3 font-scale slds-text-color_inverse "
-                 style="margin-top:1.5rem; overflow:hidden;">
-                <div class="info-box slds-box" style="height:18em; background-color: #8F8F8F; border-color: #F54747; border-width: 0px;">
-                    <div class="slds-text-heading_medium slds-align_absolute-center" style="margin-top:.25rem">
+            <div class="slds-col slds-size_1-of-1 font-scale slds-text-color_inverse "
+                 style="overflow:hidden;">
+                <div class="info-box" style="height:18em; background-color: #333333;">
+                    <div class="slds-text-heading_medium slds-align_absolute-center" style="padding-top:1.5rem">
                         Schedule
                     </div>
                     <div class="book-media slds-media slds-media_large slds-media_center">
@@ -231,7 +268,7 @@
             var geocoder = new google.maps.Geocoder();
             var address ="2544 NE Broadway St, Portland, Oregon 97232, United States";
             var infowindow = new google.maps.InfoWindow({
-            content: "<b>J&ampJ Hair Salon</b><br>2544 NE Broadway St<br>Portland, 97232<br>OR<br>US"
+            content: "<b>J&ampJ Hair Salon</b><br>2544 NE Broadway St<br>Portland, 97232<br>OR"
             
         });
 
