@@ -1,9 +1,15 @@
 <apex:page showHeader="false" sidebar="false" doctype="html-5.0" standardStylesheets="false"
-           controller="HomeController">
+           controller="BookJanController">
+           
+    <link href="{!$Resource.fccssmin}" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+    <script src="{!$Resource.fcminjs}"></script>       
+           
     <style type="text/css">
-    
-        
-    
+
         .rounded{
             border-radius: 6px;
         }
@@ -84,7 +90,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        <div id="map"></div>
+        
         
         .info-box{
             background-color: #8F8F8F !important;
@@ -149,12 +155,40 @@
               padding-bottom: 9.5rem;
          }
          
+         #calendar-container{
+             
+             padding:1rem;
+             
+             height: 70vh;        
+         }
+         
+         #calendar{
+             width: 50%;
+             float: right;
+         }
+                 
 
 
 
 
 
     </style>
+
+    
+    <script>
+    
+    $(document).ready(function() {
+      
+        
+       $('#calendar').fullCalendar({
+            defaultView: 'month',
+            height: 'parent',
+            events: 'https://fullcalendar.io/demo-events.json'
+       });
+        console.log('drawn')
+    });
+    </script>
+    
 
     <head>
         <meta charset="utf-8"/>
@@ -189,110 +223,13 @@
                 
                   
             </div>
-
-
-            <div class="slds-col slds-size_1-of-1 font-scale slds-text-color_inverse "
-                 style="overflow:hidden;">
-                <div class="info-box" style="height:18em; background-color: #333333;">
-                    <div class="slds-text-heading_medium slds-align_absolute-center" style="padding-top:1.5rem">
-                        Schedule
-                    </div>
-                    <div class="book-media slds-media slds-media_large slds-media_center">
-                        <div class="slds-media__figure">
-                          <span class="slds-avatar slds-avatar_large">
-                            <apex:image url="{!$Resource.JanPhoto}"/>
-                          </span>
-                        </div>
-                        <div class="slds-media__body">
-                          <apex:commandButton value="Book with Jan" action="{!bookJan}" styleClass="book-button slds-button" />
-                        </div>
-                    </div>
-                    <div class="book-media slds-media  slds-media_large slds-media_center">
-                        <div class="slds-media__figure">
-                          <span class="slds-avatar slds-avatar_large">
-                            <apex:image url="{!$Resource.MelPhoto}"/>
-                          </span>
-                        </div>
-                        <div class="slds-media__body">
-                          <apex:commandButton value="Book with Mel" action="{!bookMel}"  styleClass="book-button slds-button" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+         <div id="calendar-container">
+            <div id="calendar"></div>
+        </div>   
         </div>
-
-    </apex:form>
-
-    </body>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpdCbQHBUFFdClkPLgLRNQ5Wk5IQaiKAA&callback=initMap"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!-- Contains code adapted from:https://eshopsync.com/integrate-google-map-api-salesforce-2/ -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var myOptions={ zoom: 14,mapTypeId: google.maps.MapTypeId.ROADMAP, mapTypeControl: false };
-            var map;
-            var marker;
-            var geocoder = new google.maps.Geocoder();
-            var address ="2544 NE Broadway St, Portland, Oregon 97232, United States";
-            var infowindow = new google.maps.InfoWindow({
-            content: "<b>J&ampJ Hair Salon</b><br>2544 NE Broadway St<br>Portland, 97232<br>OR"
-            
-        });
-
-        geocoder.geocode( { address: address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK&&results.length) {
-                if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-
-                    //create map
-                    map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-                    //center map
-                    map.setCenter(results[0].geometry.location);
-
-                    //create marker
-                    marker = new google.maps.Marker({
-                    position: results[0].geometry.location,
-                    map: map,
-                    title: "Salon Location"
-                });
-
-                //add listeners
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.open(map,marker);
-                });
-                google.maps.event.addListener(infowindow, 'closeclick', function() {
-                    map.setCenter(marker.getPosition());
-                });
-            }
-        } else {
-            $('#map').css({'height' : '15px'});
-            $('#map').html("Oops! JJ studio's billing address could not be found, please make sure the address is correct.");
-            resizeIframe();
-            }
-    });
-
-        function resizeIframe() {
-            var me = window.name;
-            if (me) {
-                var iframes = parent.document.getElementsByName(me);
-                if (iframes&&iframes.length == 1) {
-                    height = document.body.offsetHeight;
-                    iframes[0].style.height = height + "px";
-                }
-            }
-            }
-        });
         
-    function bookMel() {
-        window.location = 'https://c.na50.visual.force.com/apex/BookMel';
-    }
-    function bookJan() {
-        window.location = 'https://c.na50.visual.force.com/apex/BookJan';
-    }
-
-
-    </script>
+    </apex:form>
+    
+</body>
 
 </apex:page>

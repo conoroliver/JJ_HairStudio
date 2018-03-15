@@ -186,12 +186,7 @@
                 <div class="logo-container">
                     <apex:image id="logo" value="{!$Resource.Logo}" styleClass="logo" alt="Studio logo"/>
                 </div>    
-                <div id="title-box" class="slds-border_top slds-border_left slds-border_right slds-border_bottom">
-                    <div id="title-text"
-                         class="slds-text-heading_large slds-align_absolute-center slds-text-color_inverse">
-                        Welcome to J&amp;J Hair Studio
-                    </div>
-                </div>
+                
                   
             </div>
 
@@ -235,7 +230,7 @@
                           </span>
                         </div>
                         <div class="slds-media__body">
-                          <apex:commandButton value="Book with Jan" styleClass="book-button slds-button" />
+                          <apex:commandButton value="Book with Jan" action="{!bookJan}" styleClass="book-button slds-button" />
                         </div>
                     </div>
                     <div class="book-media slds-media  slds-media_large slds-media_center">
@@ -245,7 +240,7 @@
                           </span>
                         </div>
                         <div class="slds-media__body">
-                          <apex:commandButton value="Book with Mel" styleClass="book-button slds-button" />
+                          <apex:commandButton value="Book with Mel" action="{!bookMel}"  styleClass="book-button slds-button" />
                         </div>
                     </div>
                 </div>
@@ -315,6 +310,13 @@
             }
             }
         });
+        
+    function bookMel() {
+        window.location = 'https://c.na50.visual.force.com/apex/BookMel';
+    }
+    function bookJan() {
+        window.location = 'https://c.na50.visual.force.com/apex/BookJan';
+    }
 
 
     </script>
